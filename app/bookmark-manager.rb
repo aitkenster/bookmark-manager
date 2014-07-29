@@ -2,21 +2,15 @@ require 'sinatra/base'
 require 'data_mapper'
 require 'database_cleaner'
 require 'rack-flash'
+require_relative 'data_mapper_setup'
 require './lib/user'
 require './lib/tag'
 require './lib/link'
 
-env = ENV["RACK_ENV"] || "development"
 
-DataMapper.setup(:default, "postgres://localhost/bookmark_manager_#{env}")
-
-DataMapper.finalize
-
-DataMapper.auto_upgrade!
 
 class BookmarkManager < Sinatra::Base
 
-	set :views, './views'
 	enable :sessions
 	set :session_secret, 'super secret'
   use Rack::Flash

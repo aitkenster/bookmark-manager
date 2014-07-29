@@ -1,9 +1,9 @@
 ENV["RACK_ENV"] = 'test'
 
-require './lib/bookmark-manager'
+require './app/bookmark-manager'
 require 'capybara/rspec'
 
-Capybara.app = BookmarkManager.new 
+Capybara.app = BookmarkManager
 
 RSpec.configure do |config|
 

@@ -1,5 +1,5 @@
 require 'link'
-require 'bookmark-manager'
+require './app/bookmark-manager'
 require 'spec_helper'
 
 feature "User browses the list of links" do 

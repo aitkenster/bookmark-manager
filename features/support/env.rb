@@ -2,7 +2,7 @@
 
 ENV['RACK_ENV'] = 'test'
 
-require File.join(File.dirname(__FILE__), '..', '..', 'lib/bookmark-manager.rb')
+require File.join(File.dirname(__FILE__), '..', '..', 'app/bookmark-manager')
 
 require 'capybara'
 require 'capybara/cucumber'
