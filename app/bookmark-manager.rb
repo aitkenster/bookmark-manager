@@ -108,9 +108,9 @@ class BookmarkManager < Sinatra::Base
                   password_token: nil,
                   password_token_timestamp: nil   )
       "password changed"
-    elsif 
-      password == password_confirmation
-
+    elsif password != password_confirmation
+      "Sorry, your passwords don't match."
+    else
       "Sorry, your password reset email has expired."
     end
   end
