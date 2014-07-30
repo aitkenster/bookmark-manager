@@ -96,11 +96,18 @@ class BookmarkManager < Sinatra::Base
   end
 
   post '/new_password' do
-    user = User.first(password_token: params[:token])
+    @user = User.first(password_token: params[:token])
     password              = params[:password]
     password_confirmation = params[:password_confirmation]
-    user.update(password: password, password_confirmation: password_confirmation )
-    "password changed"
+    if @user.password_token_timestamp.to_time >= Time.now - 3600
+      @user.update(password: password, 
+                  password_confirmation: password_confirmation,
+                  password_token: nil,
+                  password_token_timestamp: nil   )
+      "password changed"
+    else
+      "Sorry, your password reset email has expired."
+    end
   end
 
   helpers do 
