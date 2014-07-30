@@ -22,7 +22,7 @@ feature "User signs in" do
 		visit '/'
 		expect(page).not_to have_content("Welcome, test@test.com")
 		sign_in("test@test.com", "wrong")
-		expect(page).not_to have_content("Welcome, test@test.com")
+		expect(page).to have_content("The email or password is incorrect")
 	end
 
 end
@@ -104,7 +104,7 @@ end
 	end
 
 	scenario 'enters a new password incorrectly' do 
-	user = User.create(	:email                 => "test@test.com",
+		user = User.create(	:email                 => "test@test.com",
 											:password              => 'test',
 								     	:password_confirmation => 'test',
 								      :password_token => 12345678,
@@ -115,6 +115,8 @@ end
 		click_button "New Password"
 		expect(page).to have_content("Sorry, your passwords don't match.")
 	end
+
+
 
 end
 
