@@ -65,6 +65,25 @@ feature 'User signs out' do
 
 end
 
+# feature 'User resets password' do 
+
+# 	scenario 'request password email to be sent' do
+# 		user = User.create(:email                 => "test@test.com",
+# 											 :password              => 'test',
+# 								       :password_confirmation => 'test')
+# 		visit 'users/reset_password'
+# 		fill_in "email", :with => "test@test.com" 
+# 		click_button "Forgotten Password"
+# 		puts user.password_token.inspect
+# 		puts user.inspect
+# 		expect(user.password_token).not_to be_nil
+# 	end
+
+# end
+
+
+
+
 
 
 

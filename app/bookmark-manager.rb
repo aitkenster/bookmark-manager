@@ -82,14 +82,17 @@ class BookmarkManager < Sinatra::Base
 
   post '/reset_password_email' do
     user = User.first(:email => params[:email])
-    user.generate_token_and_timestamp
+    password_token = (1..64).map{('A'..'Z').to_a.sample}.join
+    password_token_timestamp = Time.now
+    user.password_token = password_token
+    user.password_token_timestamp = password_token_timestamp
+    user.save
+    redirect '/'
   end
   
-
-
-  get 'users/reset_password/:token' do
+  get '/users/reset_password/:password_token' do |token|
     user = User.first(:password_token => token)
-    erb :reset_password
+    erb :"users/reset_password"
   end
 
   post '/new_password' do
