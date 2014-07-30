@@ -37,5 +37,16 @@ class User
     puts password_token_timestamp 
   end
 
+def send_simple_message(email,password_token)
+  RestClient.post "https://api:key-8e1b4255ced5f5e0c349b306b27168a5"\
+  "@api.mailgun.net/v2/sandbox17df6727cc5b42628140602d1cf7d942.mailgun.org/messages",
+  :from => "Mailgun Sandbox <postmaster@sandbox17df6727cc5b42628140602d1cf7d942.mailgun.org>",
+  :to => email,
+  :subject => "Hello forgetful",
+  :text => "Hi please click on this link to reset your password --> /users/reset_password/#{password_token}"
+end
+    
+
+
 end
 

@@ -2,6 +2,7 @@ require 'sinatra/base'
 require 'data_mapper'
 require 'database_cleaner'
 require 'rack-flash'
+require 'rest-client'
 require_relative 'data_mapper_setup'
 require './lib/user'
 require './lib/tag'
@@ -87,7 +88,8 @@ class BookmarkManager < Sinatra::Base
     user.password_token = password_token
     user.password_token_timestamp = password_token_timestamp
     user.save
-    redirect '/'
+    email = user.email
+    user.send_simple_message(email, password_token)
   end
   
   get '/users/reset_password/:token' do |token|
@@ -115,6 +117,7 @@ class BookmarkManager < Sinatra::Base
   		@current_user ||=User.get(session[:user_id]) if session[:user_id]
   	end
   end
+
 
 
   # start the server if ruby file executed directly
