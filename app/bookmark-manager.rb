@@ -90,13 +90,17 @@ class BookmarkManager < Sinatra::Base
     redirect '/'
   end
   
-  get '/users/reset_password/:password_token' do |token|
-    user = User.first(:password_token => token)
+  get '/users/reset_password/:token' do |token|
+    @token = token
     erb :"users/reset_password"
   end
 
   post '/new_password' do
-    user = User.first(:password_token => token)
+    user = User.first(password_token: params[:token])
+    password              = params[:password]
+    password_confirmation = params[:password_confirmation]
+    user.update(password: password, password_confirmation: password_confirmation )
+    "password changed"
   end
 
   helpers do 
