@@ -65,21 +65,58 @@ feature 'User signs out' do
 
 end
 
-# feature 'User resets password' do 
+ feature 'User resets password' do 
 
-# 	scenario 'request password email to be sent' do
-# 		user = User.create(:email                 => "test@test.com",
-# 											 :password              => 'test',
-# 								       :password_confirmation => 'test')
-# 		visit 'users/reset_password'
-# 		fill_in "email", :with => "test@test.com" 
-# 		click_button "Forgotten Password"
-# 		puts user.password_token.inspect
-# 		puts user.inspect
-# 		expect(user.password_token).not_to be_nil
-# 	end
+	scenario 'request password email to be sent' do
+		user = User.create(:email                 => "test@test.com",
+											 :password              => 'test',
+								       :password_confirmation => 'test')
+		visit 'users/reset_password'
+		fill_in "email", :with => "test@test.com" 
+		click_button "Forgotten Password"
+		expect(page).to have_content("Your reset password link is on its way!")
+	end
 
-# end
+	scenario 'enters a new password correctly within the time frame' do 
+		user = User.create(:email                 => "test@test.com",
+										 :password              => 'test',
+							       :password_confirmation => 'test',
+							       :password_token => 12345678,
+							       :password_token_timestamp => Time.now)
+		visit "users/reset_password/12345678"
+		fill_in "password", :with => "newpass"
+		fill_in "password_confirmation", :with => "newpass"
+		click_button "New Password"
+		expect(page).to have_content("password changed")
+	end
+
+	scenario 'enters a new password correctly not in the time frame' do 
+		user = User.create(:email                 => "test@test.com",
+											 :password              => 'test',
+								       :password_confirmation => 'test',
+								       :password_token => 12345678,
+								       :password_token_timestamp => Time.now-3605)
+		visit "users/reset_password/12345678"
+		fill_in "password", :with => "newpass"
+		fill_in "password_confirmation", :with => "newpass"			
+		click_button "New Password"
+		expect(page).to have_content("Sorry, your password reset email has expired.")
+	end
+
+	scenario 'enters a new password incorrectly' do 
+	user = User.create(	:email                 => "test@test.com",
+											:password              => 'test',
+								     	:password_confirmation => 'test',
+								      :password_token => 12345678,
+								      :password_token_timestamp => Time.now-3605)
+		visit "users/reset_password/12345678" 
+		fill_in "password", :with => "newpass"
+		fill_in "password_confirmation", :with => "newpas"			
+		click_button "New Password"
+		expect(page).to have_content("Sorry, your passwords don't match.")
+	end
+
+end
 
 
 

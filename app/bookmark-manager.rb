@@ -90,6 +90,7 @@ class BookmarkManager < Sinatra::Base
     user.save
     email = user.email
     user.send_simple_message(email, password_token)
+    "Your reset password link is on its way!"
   end
   
   get '/users/reset_password/:token' do |token|
@@ -107,7 +108,9 @@ class BookmarkManager < Sinatra::Base
                   password_token: nil,
                   password_token_timestamp: nil   )
       "password changed"
-    else
+    elsif 
+      password == password_confirmation
+
       "Sorry, your password reset email has expired."
     end
   end
