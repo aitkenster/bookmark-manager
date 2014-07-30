@@ -6,6 +6,4 @@ DataMapper.setup(:default, ENV['DATABASE_URL'] || "postgres://localhost/bookmark
 require_relative '../lib/link'
 require_relative '../lib/tag'
 require_relative '../lib/user'
-DataMapper.auto_upgrade!
 DataMapper.finalize
-
