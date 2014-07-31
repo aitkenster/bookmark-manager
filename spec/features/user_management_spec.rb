@@ -68,8 +68,6 @@ end
 
 feature 'User resets password' do 
 
-	
-
 	scenario 'request password email to be sent' do
 		user = User.create(:email                 => "test@test.com",
 											 :password              => 'test',
