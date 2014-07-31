@@ -17,6 +17,7 @@ require_relative 'helpers/application'
 enable :sessions
 set :session_secret, 'super secret'
 use Rack::Flash
+set :public_dir, Proc.new {File.join(root, "..", "public")}
 
 
 
