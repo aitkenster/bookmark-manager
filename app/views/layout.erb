@@ -7,13 +7,22 @@
 		</head>
 
 		<body>
-			<%if current_user %>
-				Welcome, <%= current_user.email %>
-				<form method="post" action="/users/sign_out">
+		<header>
+			<div id="logo"> Bookmark Manager </div>
+			<div id="user-links">
+				<%if current_user %>
+					<span id="welcome-message">
+						Welcome, <%= current_user.email %>
+					</span>
+					<form method="post" action="/users/sign_out">
 						<input type="hidden" name="_method" value="delete">
 						<input type="submit" value="Sign out">
 					</form>
 				<% end %>
+			</div>
+		</header>
+
+
 
 				<% if flash[:errors] && !flash[:errors].empty? %>
 					Sorry, there were the following errors with the form:

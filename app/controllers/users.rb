@@ -3,8 +3,8 @@ get '/users/new' do
   erb :"users/new"
 end
 
-post '/users' do 
-  @user = User.create(:email => params[:email],
+post '/users' do
+  @user = User.new(:email => params[:email],
                       :password => params[:password],
                       :password_confirmation => params[:password_confirmation])
   if @user.save
@@ -31,15 +31,15 @@ post '/users/reset_password_email' do
   user.send_reset_message(user.email, user.password_token)
   flash[:notice] = "Your reset password link is on its way!"
 end
-  
+
 
 post '/users/new_password' do
   @user = User.first(password_token: params[:token])
-  
+
   if params[:password] != params[:password_confirmation]
       flash[:notice] = "Sorry, your passwords don't match."
   elsif @user.password_token_timestamp >= (Time.now - 3600)
-    @user.update( password:                 params[:password], 
+    @user.update( password:                 params[:password],
                   password_confirmation:    params[:password_confirmation],
                   password_token:           nil,
                   password_token_timestamp: nil)

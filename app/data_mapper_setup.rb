@@ -8,4 +8,3 @@ require_relative 'models/tag'
 require_relative 'models/user'
 DataMapper.finalize
 
-DataMapper.auto_migrate!
