@@ -42,8 +42,8 @@
 
 
 				<% if flash[:errors] && !flash[:errors].empty? %>
-					Sorry, there were the following errors with the form:
-					<ul id "errors">
+					<ul id="errors">
+						Sorry, there were the following errors with the form:
 						<% flash[:errors].each do |error| %>
 							<li><%=error%></li>
 						<%end%>

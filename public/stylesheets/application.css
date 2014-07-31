@@ -54,3 +54,24 @@ font-family: 'Roboto', sans-serif;
   float: right;
   font-size: 12px;
 }
+
+#notice {
+  text-align: center;
+  margin: 5px;
+  padding: 5px;
+  background-color: rgba(67,183,120,0.75);
+  border-radius: 4px;
+  box-shadow: 0 0 3px rgba(0,0,0,0.4)
+  color: white;
+}
+
+#errors {
+  text-align: center;
+  margin: 5px;
+  padding: 5px;
+  background-color: #E8E0BA;
+  border-radius: 4px;
+  box-shadow: 0 0 3px rgba(0,0,0,0.4)
+  color: white;
+}
+
