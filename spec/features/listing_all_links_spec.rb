@@ -1,4 +1,4 @@
-require 'link'
+require './app/models/link'
 require './app/bookmark-manager'
 require 'spec_helper'
 
