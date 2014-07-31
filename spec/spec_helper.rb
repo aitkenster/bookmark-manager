@@ -1,6 +1,7 @@
 ENV["RACK_ENV"] = 'test'
 
 require './app/bookmark-manager'
+require 'database_cleaner'
 require 'capybara/rspec'
 
 Capybara.app = Sinatra::Application

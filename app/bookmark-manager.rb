@@ -1,6 +1,5 @@
 require 'sinatra'
 require 'data_mapper'
-require 'database_cleaner'
 require 'rack-flash'
 require 'rest-client'
 require 'sinatra/partial'
