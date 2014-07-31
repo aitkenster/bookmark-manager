@@ -34,16 +34,16 @@ end
   
 
 post '/users/new_password' do
-  user = User.first(password_token: params[:token])
+  @user = User.first(password_token: params[:token])
   
-  if user.password_token_timestamp.to_time >= Time.now - 3600
-     user.update(  password:                 params[:password], 
-                    password_confirmation:    params[:password_confirmation],
-                    password_token:           nil,
-                    password_token_timestamp: nil)
+  if params[:password] != params[:password_confirmation]
+      flash[:notice] = "Sorry, your passwords don't match."
+  elsif @user.password_token_timestamp >= (Time.now - 3600)
+    @user.update( password:                 params[:password], 
+                  password_confirmation:    params[:password_confirmation],
+                  password_token:           nil,
+                  password_token_timestamp: nil)
     flash[:notice] = "password changed"
-  elsif params[:password] != params[:password_confirmation]
-    flash[:notice] = "Sorry, your passwords don't match."
   else
     flash[:notice] = "Sorry, your password reset email has expired."
   end
