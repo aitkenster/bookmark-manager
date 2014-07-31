@@ -1,4 +1,4 @@
-post '/links' do 
+post '/links' do
   url = params["url"]
   title = params["title"]
   tags = params["tags"].split(" ").map do |tag|
@@ -6,4 +6,8 @@ post '/links' do
   end
   Link.create(:url => url, :title => title, :tags => tags)
   redirect to('/')
+end
+
+get '/links/new' do
+  erb :links
 end

@@ -6,6 +6,7 @@ gem 'dm-postgres-adapter'
 gem 'bcrypt-ruby'
 gem 'rack-flash3'
 gem 'rest-client'
+gem 'sinatra-partial'
 
 group :development, :test do
   gem 'capybara'
@@ -14,6 +15,6 @@ group :development, :test do
   gem 'launchy'
   gem 'rspec'
   gem 'shotgun'
-  gem 'database_cleaner' 
+  gem 'database_cleaner'
 
 end

@@ -12,13 +12,18 @@
 		<header>
 		<div id="logo"> Bookmark Manager
 			<%if current_user %>
+				<a href="/links/new"><button class="nicebutton">Add Link</button></a>
 				<form method="post" action="/users/sign_out">
 				<input type="hidden" name="_method" value="delete">
-				<input type="submit" value="Sign out">
+				<input class="nicebutton"type="submit" value="Sign out">
 				</form>
 			<%else%>
-				 <input type="submit" value="Sign In">
-				 <input type="submit" value="Sign Up">
+				<form method="get" action="/sessions/new">
+				 <input class="nicebutton" type="submit" value="Sign In">
+				 </form>
+				 <form method="get" action="/users/new">
+				 <input class="nicebutton"type="submit" value="Sign Up">
+				 </form>
 			<%end%>
 			</div>
 

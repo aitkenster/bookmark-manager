@@ -11,3 +11,46 @@ font-family: 'Roboto', sans-serif;
   color: black;
   padding: 15px;
 }
+
+.nicebutton {
+   display: -moz-inline-stack;
+   display: inline-block;
+   width: 80px;
+   height: 39px;
+   line-height: 39px;
+   vertical-align: text-middle;
+   text-align: center;
+   color: black;
+   font-family: 'Roboto', sans-serif;
+   font-size: 23px;
+   font-weight: normal;
+   font-style: normal;
+   text-shadow: none;
+}
+
+#links {
+  background-color: white;
+  margin: 50px;
+  padding: 50px;
+  box-shadow: black;
+}
+
+.link {
+  background-color: #EEE;
+  box-shadow: 0 0 5px rgba(0,0,0,0.4);
+  margin: 10px inherit;
+  padding: 15px 10px;
+}
+
+.link a.title {
+  letter-spacing: 1px;
+}
+
+.link .description {
+  margin: 10px inherit;
+}
+
+.link .source {
+  float: right;
+  font-size: 12px;
+}
