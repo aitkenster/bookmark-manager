@@ -1,7 +1,7 @@
 <body>
 	<%if current_user %>
 		Welcome, <%= current_user.email %>
-		<form method="post" action="/sign_out">
+		<form method="post" action="/users/sign_out">
 				<input type="hidden" name="_method" value="delete">
 				<input type="submit" value="Sign out">
 			</form>

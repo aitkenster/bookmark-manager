@@ -28,6 +28,7 @@ feature "User signs in" do
 end
 
 feature "User signs up" do 
+
 	scenario "when being logged in" do 
 		lambda { sign_up }.should change(User, :count).by(1)
 		expect(page).to have_content("Welcome, alice@example.com")
@@ -65,7 +66,9 @@ feature 'User signs out' do
 
 end
 
- feature 'User resets password' do 
+feature 'User resets password' do 
+
+	
 
 	scenario 'request password email to be sent' do
 		user = User.create(:email                 => "test@test.com",
@@ -115,8 +118,6 @@ end
 		click_button "New Password"
 		expect(page).to have_content("Sorry, your passwords don't match.")
 	end
-
-
 
 end
 
