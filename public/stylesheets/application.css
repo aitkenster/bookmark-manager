@@ -1,4 +1,13 @@
 body {
-background-color: blue;
+background-color: #C1448F;
+font-family: 'Roboto', sans-serif;
 
+}
+
+#logo {
+  background-color: white;
+  font-size: 35px;
+  font-family: 'Shadows Into Light Two', cursive;
+  color: black;
+  padding: 15px;
 }

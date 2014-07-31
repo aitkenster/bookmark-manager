@@ -4,20 +4,32 @@
 		<head>
 			<link rel="stylesheet" type="text/css" href="/stylesheets/reset.css">
 			<link href="/stylesheets/application.css"rel="stylesheet" type="text/css" >
+			 <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+			 <link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light+Two' rel='stylesheet' type='text/css'>
 		</head>
 
 		<body>
 		<header>
-			<div id="logo"> Bookmark Manager </div>
+		<div id="logo"> Bookmark Manager
+			<%if current_user %>
+				<form method="post" action="/users/sign_out">
+				<input type="hidden" name="_method" value="delete">
+				<input type="submit" value="Sign out">
+				</form>
+			<%else%>
+				 <input type="submit" value="Sign In">
+				 <input type="submit" value="Sign Up">
+			<%end%>
+			</div>
+
+
+
+
 			<div id="user-links">
 				<%if current_user %>
 					<span id="welcome-message">
 						Welcome, <%= current_user.email %>
 					</span>
-					<form method="post" action="/users/sign_out">
-						<input type="hidden" name="_method" value="delete">
-						<input type="submit" value="Sign out">
-					</form>
 				<% end %>
 			</div>
 		</header>
