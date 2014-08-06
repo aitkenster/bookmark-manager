@@ -1,5 +1,12 @@
 
 <div id='links-container'>
+
+	<ul id='tags'>
+		<% @tags.each do |tag| %>
+			<%= partial :tag, :locals => {:tag => tag} %>
+		<%end%>
+	</ul>
+	
   <ul id='links'>
     <% @links.each do |link| %>
       <%= partial :link, :locals => {:link => link} %>
