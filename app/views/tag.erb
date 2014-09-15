@@ -1,3 +1,4 @@
 <li class='tag'>
-	<%=tag.text%>
+<form method="get" action="/tag/:<%=tag.text%>">
+	<input class="nicebutton" type="submit" value="<%=tag.text%>">
 </li>

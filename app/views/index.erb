@@ -6,13 +6,14 @@
 			<%= partial :tag, :locals => {:tag => tag} %>
 		<%end%>
 	</ul>
-	
+
   <ul id='links'>
     <% @links.each do |link| %>
       <%= partial :link, :locals => {:link => link} %>
     <% end %>
   </ul>
 </div>
+
 
 
 
